@@ -1,5 +1,7 @@
 class Snake {
-    constructor(){
+    constructor(canvas){
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
         this.x = 0;
         this.y = 0;
         this.xSpeed = 1;
@@ -9,12 +11,14 @@ class Snake {
     update(){
         this.x += this.xSpeed;
         this.y += this.ySpeed;
-        console.log(this.x);
     }
 
-    show(ctx){
-        ctx.fillStyle = '#fff';
-        ctx.fillRect(this.x, this.y, 10, 10);
+    show(){
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.beginPath();
+        this.ctx.fillRect(this.x, this.y, 10, 10);
+        this.ctx.fillStyle = '#fff';
+        this.ctx.closePath();
     }
 }
 
