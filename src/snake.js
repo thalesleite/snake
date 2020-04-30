@@ -15,16 +15,19 @@ class Snake {
     }
 
     update() {
+        console.log(this.canvas.height, 'this.canvas.height: ');
+        console.log(this.y, 'this.y: ');
+        console.log(this.ySpeed, 'this.ySpeed: ');
         if ( (this.x === this.canvas.width || this.x > this.canvas.width ) && this.xSpeed === 1 ) {
             this.x = -this.scale;
         }
-        if ( this.x === 0 && this.xSpeed === -1 ) {
+        if ( ( this.x === 0 || this.x < 0 ) && this.xSpeed === -1 ) {
             this.x = this.canvas.width;
         }
         if ( (this.y === this.canvas.height || this.y > this.canvas.height ) && this.ySpeed === 1) {
             this.y = -this.scale;
         }
-        if ( this.y === 0 && this.ySpeed === -1 ) {
+        if ( ( this.y === 0 || this.y < 0 ) && this.ySpeed === -1 ) {
             this.y = this.canvas.height;
         }
 

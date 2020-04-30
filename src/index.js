@@ -1,11 +1,15 @@
-import Snake from './snake.js';
+import Snake from './Snake.js';
+import Food from './Food.js';
 
 const canvas = document.getElementById('screen');
 const snake = new Snake(canvas);
+const food = new Food(canvas);
 
 const draw = () => {
     snake.show();
     snake.update();
+
+    food.show();
 }
 
 const keyPressed = (e) => {
