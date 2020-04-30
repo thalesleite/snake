@@ -25,5 +25,5 @@ const keyPressed = (e) => {
     }
 }
 
-setInterval(draw, 300);
+setInterval(draw, 120);
 window.addEventListener('keydown', keyPressed);

@@ -2,7 +2,7 @@ class Snake {
     constructor(canvas){
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
-        this.scale = 20;
+        this.scale = 15;
         this.x = 0;
         this.y = 0;
         this.xSpeed = 1;
@@ -15,11 +15,22 @@ class Snake {
     }
 
     update() {
-        if ( ((this.x + this.scale) < this.canvas.width /*&& ((this.x + this.scale) > 0 || (this.x + this.scale) === 0 )*/ ) &&
-             ((this.y + this.scale) < this.canvas.height /*|| (this.y) < 0*/ )) {
-                this.x += this.xSpeed * this.scale;
-                this.y += this.ySpeed * this.scale;
+        if ( (this.x === this.canvas.width || this.x > this.canvas.width ) && this.xSpeed === 1 ) {
+            this.x = -this.scale;
         }
+        if ( this.x === 0 && this.xSpeed === -1 ) {
+            this.x = this.canvas.width;
+        }
+        if ( (this.y === this.canvas.height || this.y > this.canvas.height ) && this.ySpeed === 1) {
+            this.y = -this.scale;
+        }
+        if ( this.y === 0 && this.ySpeed === -1 ) {
+            this.y = this.canvas.height;
+        }
+
+        // Update move
+        this.x += this.xSpeed * this.scale;
+        this.y += this.ySpeed * this.scale;
     }
 
     show() {
