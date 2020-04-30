@@ -15,9 +15,6 @@ class Snake {
     }
 
     update() {
-        console.log(this.canvas.height, 'this.canvas.height: ');
-        console.log(this.y, 'this.y: ');
-        console.log(this.ySpeed, 'this.ySpeed: ');
         if ( (this.x === this.canvas.width || this.x > this.canvas.width ) && this.xSpeed === 1 ) {
             this.x = -this.scale;
         }
@@ -31,7 +28,7 @@ class Snake {
             this.y = this.canvas.height;
         }
 
-        // Update move
+        // Update snake move
         this.x += this.xSpeed * this.scale;
         this.y += this.ySpeed * this.scale;
     }

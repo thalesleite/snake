@@ -13,7 +13,6 @@ const draw = () => {
 }
 
 const keyPressed = (e) => {
-    console.log(e.keyCode);
     if ( e.keyCode === 37 ) {
         // 37 LEFT
         snake.direction(-1, 0);

@@ -2,9 +2,9 @@ class Food {
     constructor(canvas){
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
-        this.scale = 15;
-        this.x = 30;
-        this.y = 20;
+        this.scale = 10;
+        this.x = Math.ceil(Math.random() * this.canvas.width);
+        this.y = Math.ceil(Math.random() * this.canvas.height);;
     }
 
     show() {
