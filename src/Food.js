@@ -8,8 +8,12 @@ class Food {
     }
 
     show() {
+        this.ctx.beginPath();
+
         this.ctx.fillRect(this.x, this.y, this.scale, this.scale);
         this.ctx.fillStyle = '#fff';
+
+        this.ctx.closePath();
     }
 }
 
