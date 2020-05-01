@@ -2,8 +2,9 @@ import Snake from './Snake.js';
 import Food from './Food.js';
 
 const canvas = document.getElementById('screen');
-let snake = new Snake(canvas);
+const snake = new Snake(canvas);
 const food = new Food(canvas);
+const speed = 140;
 
 const draw = () => {
     snake.show();
@@ -34,5 +35,5 @@ const keyPressed = (e) => {
     }
 }
 
-setInterval(draw, 140);
+setInterval(draw, speed);
 window.addEventListener('keydown', keyPressed);
