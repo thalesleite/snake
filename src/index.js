@@ -7,9 +7,15 @@ const food = new Food(canvas);
 
 const draw = () => {
     snake.show();
+    food.show();
+
     snake.update();
 
-    food.show();
+    if (snake.x < ( food.x + food.scale ) && ( snake.x + snake.scale )  > food.x &&
+        snake.y < ( food.y + food.scale)  && ( snake.y + snake.scale ) > food.y) {
+        
+        console.log('collision detected!!!');
+    }
 }
 
 const keyPressed = (e) => {
@@ -28,5 +34,5 @@ const keyPressed = (e) => {
     }
 }
 
-setInterval(draw, 120);
+setInterval(draw, 140);
 window.addEventListener('keydown', keyPressed);

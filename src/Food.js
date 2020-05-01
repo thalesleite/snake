@@ -10,10 +10,11 @@ class Food {
     show() {
         this.ctx.beginPath();
 
-        this.ctx.fillRect(this.x, this.y, this.scale, this.scale);
-        this.ctx.fillStyle = '#fff';
+        this.ctx.rect(this.x, this.y, this.scale, this.scale);
+        this.ctx.strokeStyle = '#DC143C';
+        this.ctx.lineWidth = '2';
 
-        this.ctx.closePath();
+        this.ctx.stroke();
     }
 }
 
