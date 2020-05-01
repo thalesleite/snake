@@ -2,19 +2,19 @@ import Snake from './Snake.js';
 import Food from './Food.js';
 
 const canvas = document.getElementById('screen');
-const snake = new Snake(canvas);
+let snake = new Snake(canvas);
 const food = new Food(canvas);
 
 const draw = () => {
     snake.show();
     food.show();
-
     snake.update();
 
     if (snake.x < ( food.x + food.scale ) && ( snake.x + snake.scale )  > food.x &&
         snake.y < ( food.y + food.scale)  && ( snake.y + snake.scale ) > food.y) {
         
-        console.log('collision detected!!!');
+        food.erase();
+        food.update();
     }
 }
 
