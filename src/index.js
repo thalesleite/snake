@@ -31,8 +31,8 @@ const keyPressed = (e) => {
 }
 
 const collision = (snake, food) => {
-    if (snake.x < ( food.x + food.scale ) && ( snake.x + snake.scale )  > food.x &&
-        snake.y < ( food.y + food.scale)  && ( snake.y + snake.scale ) > food.y) {
+    if (snake.head.x < ( food.x + food.scale ) && ( snake.head.x + snake.scale )  > food.x &&
+        snake.head.y < ( food.y + food.scale)  && ( snake.head.y + snake.scale ) > food.y) {
         
         food.erase();
         food.update();

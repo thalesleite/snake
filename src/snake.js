@@ -4,10 +4,13 @@ class Snake {
         this.ctx = canvas.getContext('2d');
         this.scale = 15;
         this.size = 0;
-        this.x = 0;
-        this.y = 0;
         this.xSpeed = 1;
         this.ySpeed = 0;
+        this.head = {
+            x: 0,
+            y: 0
+        };
+        this.body = [{x: 1,y: 1}];
     }
 
     direction(x, y) {
@@ -20,22 +23,22 @@ class Snake {
     }
 
     update() {
-        if ( (this.x === this.canvas.width || this.x > this.canvas.width ) && this.xSpeed > 0 ) {
-            this.x = -this.scale;
+        if ( (this.head.x === this.canvas.width || this.head.x > this.canvas.width ) && this.xSpeed > 0 ) {
+            this.head.x = -this.scale;
         }
-        if ( ( this.x === 0 || this.x < 0 ) && this.xSpeed < 0 ) {
-            this.x = this.canvas.width;
+        if ( ( this.head.x === 0 || this.head.x < 0 ) && this.xSpeed < 0 ) {
+            this.head.x = this.canvas.width;
         }
-        if ( (this.y === this.canvas.height || this.y > this.canvas.height ) && this.ySpeed > 0 ) {
-            this.y = -this.scale;
+        if ( (this.head.y === this.canvas.height || this.head.y > this.canvas.height ) && this.ySpeed > 0 ) {
+            this.head.y = -this.scale;
         }
-        if ( ( this.y === 0 || this.y < 0 ) && this.ySpeed < 0 ) {
-            this.y = this.canvas.height;
+        if ( ( this.head.y === 0 || this.head.y < 0 ) && this.ySpeed < 0 ) {
+            this.head.y = this.canvas.height;
         }
 
         // Update snake movement
-        this.x += this.xSpeed * this.scale;
-        this.y += this.ySpeed * this.scale;
+        this.head.x += this.xSpeed * this.scale;
+        this.head.y += this.ySpeed * this.scale;
     }
 
     show() {
@@ -43,12 +46,12 @@ class Snake {
         this.ctx.beginPath();
 
         // snake's head
-        this.ctx.fillRect(this.x, this.y, this.scale, this.scale);
+        this.ctx.fillRect(this.head.x, this.head.y, this.scale, this.scale);
         this.ctx.fillStyle = '#fff';
 
         // let cont = this.size;
         // while (cont > 0) {
-        //     this.ctx.fillRect(this.x + this.scale * cont, this.y, this.scale, this.scale);
+        //     this.ctx.fillRect(this.x, this.y, this.scale, this.scale);
         //     this.ctx.fillStyle = '#fff';
 
         //     cont = cont - 1;
