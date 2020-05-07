@@ -11,12 +11,7 @@ const draw = () => {
     food.show();
     snake.update();
 
-    if (snake.x < ( food.x + food.scale ) && ( snake.x + snake.scale )  > food.x &&
-        snake.y < ( food.y + food.scale)  && ( snake.y + snake.scale ) > food.y) {
-        
-        food.erase();
-        food.update();
-    }
+    collision(snake, food);
 }
 
 const keyPressed = (e) => {
@@ -32,6 +27,17 @@ const keyPressed = (e) => {
     } else if ( e.keyCode === 40 ) {
         // 40 DOWN
         snake.direction(0, 1);
+    }
+}
+
+const collision = (snake, food) => {
+    if (snake.x < ( food.x + food.scale ) && ( snake.x + snake.scale )  > food.x &&
+        snake.y < ( food.y + food.scale)  && ( snake.y + snake.scale ) > food.y) {
+        
+        food.erase();
+        food.update();
+
+        snake.add();
     }
 }
 
