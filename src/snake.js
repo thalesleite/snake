@@ -39,7 +39,7 @@ class Snake {
         }
 
         // Update snake movement
-        for (let index = this.body.length - 1; index === 0; index--) {
+        for (let index = 0; index < this.body.length; index++) {
             if ( index === 0 ) {
                 this.body[index].x = this.head.x;
                 this.body[index].y = this.head.y;
