@@ -3,14 +3,10 @@ class Snake {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.scale = 15;
-        this.size = 0;
         this.xSpeed = 1;
         this.ySpeed = 0;
-        this.head = {
-            x: 0,
-            y: 0
-        };
-        this.body = [{x: 1,y: 1}];
+        this.head = {x: 0, y: 0};
+        this.body = [];
     }
 
     direction(x, y) {
@@ -19,7 +15,13 @@ class Snake {
     }
 
     add() {
-        this.size = this.size + 1;
+        if ( this.body.length > 0 ) {
+            // get position from last member of array body
+            const tail = this.body[this.body.length - 1];
+            this.body.push({ x: tail.x, y: tail.y });
+        } else {
+            this.body.push({ x: this.head.x, y: this.head.y });
+        }
     }
 
     update() {
@@ -37,6 +39,17 @@ class Snake {
         }
 
         // Update snake movement
+        for (let index = this.body.length - 1; index === 0; index--) {
+            if ( index === 0 ) {
+                this.body[index].x = this.head.x;
+                this.body[index].y = this.head.y;
+            } else {
+                const tail = this.body[index - 1];
+                this.body[index].x = tail.x;
+                this.body[index].y = tail.y;
+            }
+        }
+
         this.head.x += this.xSpeed * this.scale;
         this.head.y += this.ySpeed * this.scale;
     }
@@ -49,13 +62,10 @@ class Snake {
         this.ctx.fillRect(this.head.x, this.head.y, this.scale, this.scale);
         this.ctx.fillStyle = '#fff';
 
-        // let cont = this.size;
-        // while (cont > 0) {
-        //     this.ctx.fillRect(this.x, this.y, this.scale, this.scale);
-        //     this.ctx.fillStyle = '#fff';
-
-        //     cont = cont - 1;
-        // }
+        for (const member of this.body) {
+            this.ctx.fillRect(member.x, member.y, this.scale, this.scale);
+            this.ctx.fillStyle = '#fff';
+        }
 
         this.ctx.stroke();
     }
